@@ -1,0 +1,44 @@
+package linikedlist;
+
+public class Single_LinkedList {
+	public static void main(String []args) {
+		linkedlist n=new linkedlist();
+		n.add(0);
+		n.add(1);
+		n.display();
+	}
+
+}
+class node{
+	int data;
+	node next;
+	node(int val){
+		data=val;
+		next=null;
+	}
+}
+class linkedlist {
+	node head;
+	public void add(int val) {
+		node newnode=new node(val);
+		if(head==null) {
+			head =newnode;
+		}
+		else {
+			node temp=head;
+			while(temp.next!=null) {
+				temp=temp.next;
+			}
+			temp.next=newnode;
+		}
+	}
+	  void display() {
+	        node temp = head;
+	        while (temp != null) {
+	            System.out.print(temp.data+" ");
+	            temp = temp.next;
+	        }
+	        System.out.println("null");
+	    }
+
+	}
