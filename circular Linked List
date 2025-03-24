@@ -1,0 +1,72 @@
+package doublelinikedlist;
+
+public class CircularLinkedList {
+	public static void main(String []args) {
+		circularlinked j=new circularlinked();
+		j.addatstart(0);
+		j.addatstart(77);
+		j.addatend(1);
+		j.delatend();
+		j.display();
+	}
+}
+
+class node1{
+		int data;
+		node1 next;
+		node1(int val){
+			data=val;
+			next=null;
+		}
+}
+class circularlinked{
+	node1 last;
+	node1 head;
+	public void addatstart(int val) {
+		node1 newnode=new node1(val);
+		if(last==null) {
+			  last = newnode;
+	          last.next = last;
+	          return;
+		    }
+		else {
+			newnode.next=last.next;
+			last.next=newnode;
+		}
+	}
+	public void addatend(int val) {
+		node1 newnode=new node1(val);
+		if(last==null) {
+			last=newnode;
+			last.next=last;
+		}
+		else {newnode.next=last.next;
+		last.next=newnode;
+		last=newnode;
+		}
+	}
+	public void delatstart() {
+		node1 temp=last.next;
+		last.next=last.next.next;
+		temp.next=null;
+	}
+	public void delatend() {
+		node1 temp=last.next;
+		while(temp.next!=last) {
+			temp=temp.next;
+		}
+		temp.next=last.next;
+		last=temp;
+	}
+	 public void display() {
+		 node1 temp=last.next;
+		  while (true) {
+	            System.out.print(last.data + " ");
+	            last = last.next;
+	            if (temp == last.next)
+	                break;
+	        } 
+	      
+	    }
+
+}
