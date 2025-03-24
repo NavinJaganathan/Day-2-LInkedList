@@ -1,0 +1,43 @@
+package sharching;
+
+import java.util.Scanner;
+
+public class binary_Sharching {
+	public static void main(String[]args) {
+		
+		Scanner n=new Scanner(System.in);
+		int []a= {1,2,3,4,5,6,7,8};
+		
+		System.out.println("enter a number to sharch:");
+		int t=n.nextInt();
+		
+		int r=search(t,a);
+		if (r==-1) {
+			System.out.println("element is not found");
+		}
+		else {
+			System.out.println("elemant is found in index: "+r);
+		}
+		
+		
+}
+	public static int search(int t,int []a) {
+		
+		int i=0;
+		int l=a.length-1;
+		 while (i <= l) {
+	            int mid = (i + l) / 2; 
+	            if (a[mid] == t) { 
+	                return mid;
+	            }
+	            if (a[mid] < t) {
+	                i = mid + 1;
+	            } else { 
+	                l = mid - 1;
+	            }
+	        }
+	        return -1; 
+	    }
+	}
+	
+
